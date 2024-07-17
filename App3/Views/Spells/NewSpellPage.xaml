@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App3.Views.NewSpellPage">
+
+    <ContentPage.Resources>
+        <!-- Implicit styles -->
+        <Style x:Key="LabelStyle" TargetType="Label">
+            <Setter Property="TextColor" Value="DarkSlateGray"/>
+            <Setter Property="FontSize" Value="17"/>
+        </Style>
+        <Style TargetType="{x:Type Editor}">
+            <Setter Property="BackgroundColor"
+                    Value="{StaticResource AppBackgroundColor}" />
+        </Style>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <ScrollView>
+        <StackLayout>
+            <Label Text="Время Накладывания" Style="{StaticResource LabelStyle}" />
+            <Editor Placeholder="Впишите время накладывания"
+                Text="{Binding CastingTime}"
+                AutoSize="TextChanges"
+                />
+            <Label Text="Название" Style="{StaticResource LabelStyle}" />
+            <Editor Placeholder="Впишите название заклинания"
+                Text="{Binding Name}"
+                AutoSize="TextChanges"
+                />
+            <Label Text="Дистанция" Style="{StaticResource LabelStyle}" />
+            <Editor Placeholder="Впишите дистанцию заклинания"
+                Text="{Binding Distance}"
+                AutoSize="TextChanges"
+                />
+            <Label Text="Компоненты" Style="{StaticResource LabelStyle}" />
+            <Editor Placeholder="Впишите компоненты заклинания"
+                Text="{Binding Components}"
+                AutoSize="TextChanges"
+                />
+            <Label Text="Длительность" Style="{StaticResource LabelStyle}" />
+            <Editor Placeholder="Впишите длительность"
+                Text="{Binding Duration}"
+                AutoSize="TextChanges"
+                />
+            <Label Text="Классы" Style="{StaticResource LabelStyle}" />
+            <Editor Placeholder="Впишите классы персонажей"
+                Text="{Binding Classes}"
+                AutoSize="TextChanges"
+                />
+            <Label Text="Описание" Style="{StaticResource LabelStyle}" />
+            <Editor Placeholder="Добавьте описание"
+                Text="{Binding Description}"
+                AutoSize="TextChanges"
+                />
+            <Grid ColumnDefinitions="*,*">
+                <!-- Layout children in two columns -->
+                <Button Text="Сохранить"
+                    Clicked="OnSaveButtonClicked" />
+            </Grid>
+        </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

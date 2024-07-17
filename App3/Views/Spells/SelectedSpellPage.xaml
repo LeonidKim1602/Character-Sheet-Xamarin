@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App3.Views.SelectedSpellPage"
+             Title="{Binding Name}"
+             >
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="LabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="DarkSlateGray"/>
+                <Setter Property="FontSize" Value="17"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Время Накладывания" Style="{StaticResource LabelStyle}" />
+                        <Span Text=": " />
+                        <Span Text="{Binding CastingTime}" Style="{StaticResource LabelStyle}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Дистанция" Style="{StaticResource LabelStyle}" />
+                        <Span Text=": " />
+                        <Span Text="{Binding Distance}" Style="{StaticResource LabelStyle}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Компоненты" Style="{StaticResource LabelStyle}" />
+                        <Span Text=": " />
+                        <Span Text="{Binding Components}" Style="{StaticResource LabelStyle}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Длительность" Style="{StaticResource LabelStyle}" />
+                        <Span Text=": " />
+                        <Span Text="{Binding Duration}" Style="{StaticResource LabelStyle}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Классы" Style="{StaticResource LabelStyle}" />
+                        <Span Text=": " />
+                        <Span Text="{Binding Classes}" Style="{StaticResource LabelStyle}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Описание" Style="{StaticResource LabelStyle}" />
+                        <Span Text=": " />
+                        <Span Text="{Binding Description}" Style="{StaticResource LabelStyle}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Grid ColumnDefinitions="*,*">
+                <Button Grid.Column="1"
+                    Text="Удалить"
+                    Clicked="OnDeleteButtonClicked"/>
+            </Grid>
+        </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App3.Views.NoteEntryPage"
+             Title="Рюкзак">
+    <ContentPage.Resources>
+        <!-- Implicit styles -->
+        <Style x:Key="LabelStyle" TargetType="Label">
+            <Setter Property="TextColor" Value="DarkSlateGray"/>
+            <Setter Property="FontSize" Value="17"/>
+        </Style>
+        <Style TargetType="{x:Type Editor}">
+            <Setter Property="BackgroundColor"
+                    Value="{StaticResource AppBackgroundColor}" />
+        </Style>
+    </ContentPage.Resources>
+
+    <!-- Layout children vertically -->
+    <StackLayout Margin="{StaticResource PageMargin}">
+        <Label>
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Золото" Style="{StaticResource LabelStyle}" />
+                    <Span Text=": " />
+                    <Span Text="{Binding Gold}" Style="{StaticResource LabelStyle}" />
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <Entry Placeholder="Изм-я к сумме (например: 100 или -100)" x:Name="GoldChangeEntry" />
+        <Button Text="Применить" Clicked="OnApplyGoldChangeButtonClicked" />
+        <Editor Placeholder="Чо у вас там?"
+                Text="{Binding Text}"
+                AutoSize="TextChanges"
+                />
+        <Grid ColumnDefinitions="*,*">
+            <!-- Layout children in two columns -->
+            <Button Text="Сохранить"
+                    Clicked="OnSaveButtonClicked" />
+            <Button Grid.Column="1"
+                    Text="Удалить"
+                    Clicked="OnDeleteButtonClicked"/>
+        </Grid>
+    </StackLayout>
+</ContentPage>

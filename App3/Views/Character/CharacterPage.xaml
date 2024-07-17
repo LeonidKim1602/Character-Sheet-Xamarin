@@ -1,0 +1,350 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage
+    Shell.TabBarIsVisible="False"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:Models="clr-namespace:App3.Models"
+    x:Class="App3.Views.CharacterPage"
+    Title="{Binding Name}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Models:AttributeBonusConverter x:Key="AttributeBonusConverter" />
+            <Models:SkillsBonusConverter x:Key="SkillsBonusConverter" />
+            <Style x:Key="LabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="DarkSlateGray"/>
+                <Setter Property="FontSize" Value="17"/>
+            </Style>
+            <Style x:Key="LargeLabelStyle" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+                <Setter Property="TextColor" Value="DarkSlateGray"/>
+                <Setter Property="FontSize" Value="20"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Удалить" Clicked="OnDeleteClicked" />
+    </ContentPage.ToolbarItems>
+
+    <ScrollView>
+        <StackLayout Spacing="10" Padding="20">
+
+            <Label Text="Очки Здоровья" TextDecorations="Underline" Style="{StaticResource LargeLabelStyle}" />
+            <Label BindingContext="{x:Reference hpStepper}" Text="{Binding Value}" Style="{StaticResource LargeLabelStyle}" />
+            <Stepper x:Name="hpStepper" Value="{Binding HP}" Minimum="0" Maximum="{Binding MaxHP}" Increment="1" HorizontalOptions="CenterAndExpand" />
+
+            <Label Text="Временные ОЗ" TextDecorations="Underline" Style="{StaticResource LargeLabelStyle}" />
+            <Label BindingContext="{x:Reference tempHpStepper}" Text="{Binding Value}" Style="{StaticResource LargeLabelStyle}" />
+            <Stepper x:Name="tempHpStepper" Value="{Binding TempHP}" Minimum="0" Maximum="100" Increment="1" HorizontalOptions="CenterAndExpand" />
+
+            <Label Text="Класс Доспеха" TextDecorations="Underline" Style="{StaticResource LargeLabelStyle}" />
+            <Label BindingContext="{x:Reference armorStepper}" Text="{Binding Value}" Style="{StaticResource LargeLabelStyle}" />
+            <Stepper x:Name="armorStepper" Maximum="20" Value="{Binding Armor}" Increment="1" HorizontalOptions="CenterAndExpand" />
+            <Label
+            Text="Класс" TextDecorations="Underline" Style="{StaticResource LabelStyle}" />
+            <Label
+            Text="{Binding Class}" Style="{StaticResource LabelStyle}" />
+
+            <Label
+            Text="Уровень" TextDecorations="Underline" Style="{StaticResource LabelStyle}" />
+            <Label BindingContext="{x:Reference stepperLevel}" Text="{Binding Value}" Style="{StaticResource LabelStyle}" />
+            <Stepper x:Name="stepperLevel" Minimum="1" Maximum="12" Increment="1" Value="{Binding Level}"/>
+
+            <Label
+            Text="Раса" TextDecorations="Underline" Style="{StaticResource LabelStyle}"  />
+            <Label
+            Text="{Binding Race}" Style="{StaticResource LabelStyle}" />
+
+            <Label
+            Text="Предыстория" TextDecorations="Underline" Style="{StaticResource LabelStyle}" />
+            <Label
+            Text="{Binding Background}" Style="{StaticResource LabelStyle}" />
+
+            <Label
+            Text="Мировоззрение" TextDecorations="Underline" Style="{StaticResource LabelStyle}"  />
+            <Label
+            Text="{Binding Alignment}" Style="{StaticResource LabelStyle}" />
+
+            <Label
+            Text="Опыт" TextDecorations="Underline" Style="{StaticResource LabelStyle}" />
+            <Editor Text="{Binding Experience}" Style="{StaticResource LabelStyle}" />
+
+            <Label Text="Аттрибуты" TextDecorations="Underline" Style="{StaticResource LargeLabelStyle}" />
+
+            <Label Text="Сила" TextDecorations="Underline" Style="{StaticResource LabelStyle}" />
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{Binding Strength}" Style="{StaticResource LabelStyle}" />
+                        <Span Text=" " />
+                        <Span Text="{Binding Strength, Converter={StaticResource AttributeBonusConverter}}" Style="{StaticResource LabelStyle}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label
+            Text="Ловкость" TextDecorations="Underline" Style="{StaticResource LabelStyle}" />
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{Binding Dexterity}" Style="{StaticResource LabelStyle}" />
+                        <Span Text=" " />
+                        <Span Text="{Binding Dexterity, Converter={StaticResource AttributeBonusConverter}}" Style="{StaticResource LabelStyle}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label
+            Text="Телосложение" TextDecorations="Underline" Style="{StaticResource LabelStyle}" />
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{Binding Constitution}" Style="{StaticResource LabelStyle}" />
+                        <Span Text=" " />
+                        <Span Text="{Binding Constitution, Converter={StaticResource AttributeBonusConverter}}" Style="{StaticResource LabelStyle}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label
+            Text="Интеллект" TextDecorations="Underline" Style="{StaticResource LabelStyle}" />
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{Binding Intelligence}" Style="{StaticResource LabelStyle}" />
+                        <Span Text=" " />
+                        <Span Text="{Binding Intelligence, Converter={StaticResource AttributeBonusConverter}}" Style="{StaticResource LabelStyle}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label
+            Text="Мудрость" TextDecorations="Underline" Style="{StaticResource LabelStyle}" />
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{Binding Wisdom}" Style="{StaticResource LabelStyle}" />
+                        <Span Text=" " />
+                        <Span Text="{Binding Wisdom, Converter={StaticResource AttributeBonusConverter}}" Style="{StaticResource LabelStyle}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label Text="Харизма" TextDecorations="Underline" Style="{StaticResource LabelStyle}" />
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{Binding Charisma}" Style="{StaticResource LabelStyle}" />
+                        <Span Text=" " />
+                        <Span Text="{Binding Charisma, Converter={StaticResource AttributeBonusConverter}}" Style="{StaticResource LabelStyle}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label
+            Text="Вдохновение" TextDecorations="Underline" Style="{StaticResource LabelStyle}" />
+            <Label
+            Text="{Binding Inspiration}" Style="{StaticResource LabelStyle}" />
+
+            <Label
+            Text="Бонус Мастерства" TextDecorations="Underline" Style="{StaticResource LabelStyle}" />
+            <Label
+            Text="{Binding ProfficiencyBonus, Converter={StaticResource SkillsBonusConverter}}" Style="{StaticResource LabelStyle}" />
+
+            <Label Text="Навыки" TextDecorations="Underline" Style="{StaticResource LargeLabelStyle}" />
+
+
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Акробатика" Style="{StaticResource LabelStyle}" />
+                        <Span Text=": " />
+                        <Span Text="{Binding Acrobatics, Converter={StaticResource SkillsBonusConverter}}" Style="{StaticResource LabelStyle}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Атлетика" Style="{StaticResource LabelStyle}" />
+                        <Span Text=": " />
+                        <Span Text="{Binding Athletics, Converter={StaticResource SkillsBonusConverter}}" Style="{StaticResource LabelStyle}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Внимание" Style="{StaticResource LabelStyle}" />
+                        <Span Text=": " />
+                        <Span Text="{Binding Perception, Converter={StaticResource SkillsBonusConverter}}" Style="{StaticResource LabelStyle}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Выживание" Style="{StaticResource LabelStyle}" />
+                        <Span Text=": " />
+                        <Span Text="{Binding Survival, Converter={StaticResource SkillsBonusConverter}}" Style="{StaticResource LabelStyle}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Дрессировка" Style="{StaticResource LabelStyle}" />
+                        <Span Text=": " />
+                        <Span Text="{Binding AnimalHandling, Converter={StaticResource SkillsBonusConverter}}" Style="{StaticResource LabelStyle}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Запугивание" Style="{StaticResource LabelStyle}" />
+                        <Span Text=": " />
+                        <Span Text="{Binding Intimidation, Converter={StaticResource SkillsBonusConverter}}" Style="{StaticResource LabelStyle}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Исполнение" Style="{StaticResource LabelStyle}" />
+                        <Span Text=": " />
+                        <Span Text="{Binding Performance, Converter={StaticResource SkillsBonusConverter}}" Style="{StaticResource LabelStyle}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="История" Style="{StaticResource LabelStyle}" />
+                        <Span Text=": " />
+                        <Span Text="{Binding History, Converter={StaticResource SkillsBonusConverter}}" Style="{StaticResource LabelStyle}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Ловкость рук" Style="{StaticResource LabelStyle}" />
+                        <Span Text=": " />
+                        <Span Text="{Binding SleightOfHand, Converter={StaticResource SkillsBonusConverter}}" Style="{StaticResource LabelStyle}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Магия" Style="{StaticResource LabelStyle}" />
+                        <Span Text=": " />
+                        <Span Text="{Binding Arcana, Converter={StaticResource SkillsBonusConverter}}" Style="{StaticResource LabelStyle}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Медицина" Style="{StaticResource LabelStyle}" />
+                        <Span Text=": " />
+                        <Span Text="{Binding Medicine, Converter={StaticResource SkillsBonusConverter}}" Style="{StaticResource LabelStyle}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Обман" Style="{StaticResource LabelStyle}" />
+                        <Span Text=": " />
+                        <Span Text="{Binding Deception, Converter={StaticResource SkillsBonusConverter}}" Style="{StaticResource LabelStyle}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Природа" Style="{StaticResource LabelStyle}" />
+                        <Span Text=": " />
+                        <Span Text="{Binding Nature, Converter={StaticResource SkillsBonusConverter}}" Style="{StaticResource LabelStyle}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Проницательность" Style="{StaticResource LabelStyle}" />
+                        <Span Text=": " />
+                        <Span Text="{Binding Insight, Converter={StaticResource SkillsBonusConverter}}" Style="{StaticResource LabelStyle}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Расследование" Style="{StaticResource LabelStyle}" />
+                        <Span Text=": " />
+                        <Span Text="{Binding Investigation, Converter={StaticResource SkillsBonusConverter}}" Style="{StaticResource LabelStyle}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Религия" Style="{StaticResource LabelStyle}" />
+                        <Span Text=": " />
+                        <Span Text="{Binding Religion, Converter={StaticResource SkillsBonusConverter}}" Style="{StaticResource LabelStyle}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Скрытность" Style="{StaticResource LabelStyle}" />
+                        <Span Text=": " />
+                        <Span Text="{Binding Stealth, Converter={StaticResource SkillsBonusConverter}}" Style="{StaticResource LabelStyle}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Убеждение" Style="{StaticResource LabelStyle}" />
+                        <Span Text=": " />
+                        <Span Text="{Binding Persuasion, Converter={StaticResource SkillsBonusConverter}}" Style="{StaticResource LabelStyle}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+
+            <Grid ColumnDefinitions="*,*">
+                <!-- Layout children in two columns -->
+                <Button Text="Сохранить"
+                        Clicked="OnSaveButtonClicked" />
+                <Button Grid.Column="1"
+                        Text="Добавить ОЗ" Clicked="OnAddMaxHPButtonClicked" />
+
+            </Grid>
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

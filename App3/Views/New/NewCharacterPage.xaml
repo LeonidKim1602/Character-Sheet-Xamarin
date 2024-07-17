@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage Shell.TabBarIsVisible="False"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App3.Views.NewCharacterPage">
+    <ContentPage.Resources>
+        <!-- Implicit styles -->
+        <Style TargetType="{x:Type Editor}">
+            <Setter Property="BackgroundColor"
+                    Value="{StaticResource AppBackgroundColor}" />
+        </Style>
+    </ContentPage.Resources>
+
+    <!-- Layout children vertically -->
+    <ScrollView>
+    <StackLayout Margin="{StaticResource PageMargin}">
+        <Label Text="Имя" TextDecorations="Underline"  />
+        <Editor Placeholder="Введите имя персонажа"
+                Text="{Binding Name}"
+                AutoSize="TextChanges" />
+        <Label Text="Класс" TextDecorations="Underline"  />
+        <Editor Placeholder="Введите класс персонажа"
+                Text="{Binding Class}"
+                AutoSize="TextChanges" />
+        <Label Text="Уровень" TextDecorations="Underline"  />
+        <Entry BindingContext="{x:Reference stepper}" Text="{Binding Value}" />
+        <Stepper x:Name="stepper" Minimum="1" Maximum="12" Increment="1" Value="{Binding Level}"/>
+            <Label Text="Раса" TextDecorations="Underline"  />
+        <Editor Placeholder="Введите расу персонажа"
+                Text="{Binding Race}"
+                AutoSize="TextChanges" />
+        <Label Text="Происхождение" TextDecorations="Underline"  />
+        <Editor Placeholder="Введите происхождение персонажа"
+                Text="{Binding Background}"
+                AutoSize="TextChanges" />
+        <Label Text="Мировоззрение" TextDecorations="Underline"  />
+        <Editor Placeholder="Введите мировоззрение персонажа"
+                Text="{Binding Alignment}"
+                AutoSize="TextChanges" />
+        <Label Text="Опыт" TextDecorations="Underline"  />
+        <Editor Placeholder="Введите опыт персонажа"
+                Text="{Binding Experience}"
+                AutoSize="TextChanges" />
+        
+        
+            <Label Text="Сила" TextDecorations="Underline" />
+            <Entry BindingContext="{x:Reference stepperStrength}" Text="{Binding Value}" />
+            <Stepper x:Name="stepperStrength" Minimum="1" Maximum="20" Increment="1" Value="{Binding Strength}" />
+
+            <Label Text="Ловкость" TextDecorations="Underline" />
+            <Entry BindingContext="{x:Reference stepperDexterity}" Text="{Binding Value}" />
+            <Stepper x:Name="stepperDexterity" Value="{Binding Dexterity}" Minimum="1" Maximum="20" Increment="1" />
+
+            <Label Text="Телосложение" TextDecorations="Underline" />
+            <Entry BindingContext="{x:Reference stepperConstitution}" Text="{Binding Value}" />
+            <Stepper x:Name="stepperConstitution" Value="{Binding Constitution}" Minimum="1" Maximum="20" Increment="1" />
+
+            <Label Text="Интеллект" TextDecorations="Underline" />
+            <Entry BindingContext="{x:Reference stepperIntelligence}" Text="{Binding Value}" />
+            <Stepper x:Name="stepperIntelligence" Value="{Binding Intelligence}" Minimum="1" Maximum="20" Increment="1" />
+
+            <Label Text="Мудрость" TextDecorations="Underline" />
+            <Entry BindingContext="{x:Reference stepperWisdom}" Text="{Binding Value}" />
+            <Stepper x:Name="stepperWisdom" Value="{Binding Wisdom}" Minimum="1" Maximum="20" Increment="1" />
+
+            <Label Text="Харизма" TextDecorations="Underline" />
+            <Entry BindingContext="{x:Reference stepperCharisma}" Text="{Binding Value}" />
+            <Stepper x:Name="stepperCharisma" Value="{Binding Charisma}" Minimum="1" Maximum="20" Increment="1" />
+
+            <Label Text="Вдохновение" TextDecorations="Underline" />
+            <Entry BindingContext="{x:Reference stepperInspiration}" Text="{Binding Value}" />
+            <Stepper x:Name="stepperInspiration" Value="{Binding Inspiration}" Minimum="0" Maximum="20" Increment="1" />
+
+            <Label Text="Бонус мастерства" TextDecorations="Underline" />
+            <Entry BindingContext="{x:Reference stepperProfficiencyBonus}" Text="{Binding Value}" />
+            <Stepper x:Name="stepperProfficiencyBonus" Value="{Binding ProfficiencyBonus}" Minimum="0" Maximum="20" Increment="1" />
+
+            <Label Text="Акробатика" TextDecorations="Underline" />
+            <Entry BindingContext="{x:Reference stepperAcrobatics}" Text="{Binding Value}" />
+            <Stepper x:Name="stepperAcrobatics" Value="{Binding Acrobatics}" Minimum="-10" Maximum="10" Increment="1" />
+
+            <Label Text="Атлетика" TextDecorations="Underline" />
+            <Entry BindingContext="{x:Reference stepperAthletics}" Text="{Binding Value}" />
+            <Stepper x:Name="stepperAthletics" Value="{Binding Athletics}" Minimum="-10" Maximum="10" Increment="1" />
+
+            <Label Text="Внимание" TextDecorations="Underline" />
+            <Entry BindingContext="{x:Reference stepperPerception}" Text="{Binding Value}" />
+            <Stepper x:Name="stepperPerception" Value="{Binding Perception}" Minimum="-10" Maximum="10" Increment="1" />
+
+            <Label Text="Выживание" TextDecorations="Underline" />
+            <Entry BindingContext="{x:Reference stepperSurvival}" Text="{Binding Value}" />
+            <Stepper x:Name="stepperSurvival" Value="{Binding Survival}" Minimum="-10" Maximum="10" Increment="1" />
+        
+        
+            <Label Text="Дрессировка" TextDecorations="Underline"  />
+            <Entry BindingContext="{x:Reference stepperAnimalHandling}" Text="{Binding Value}" />
+            <Stepper x:Name="stepperAnimalHandling" Value="{Binding AnimalHandling}" Minimum="-10" Maximum="10" Increment="1" />
+
+            <Label Text="Запугивание" TextDecorations="Underline" />
+            <Entry BindingContext="{x:Reference stepperIntimidation}" Text="{Binding Value}" />
+            <Stepper x:Name="stepperIntimidation" Value="{Binding Intimidation}" Minimum="-10" Maximum="10" Increment="1" />
+
+            <Label Text="Исполнение" TextDecorations="Underline" />
+            <Entry BindingContext="{x:Reference stepperPerformance}" Text="{Binding Value}" />
+            <Stepper x:Name="stepperPerformance" Value="{Binding Performance}" Minimum="-10" Maximum="10" Increment="1" />
+
+            <Label Text="История" TextDecorations="Underline" />
+            <Entry BindingContext="{x:Reference stepperHistory}" Text="{Binding Value}" />
+            <Stepper x:Name="stepperHistory" Value="{Binding History}" Minimum="-10" Maximum="10" Increment="1" />
+
+            <Label Text="Ловкость рук" TextDecorations="Underline" />
+            <Entry BindingContext="{x:Reference stepperSleightOfHand}" Text="{Binding Value}" />
+            <Stepper x:Name="stepperSleightOfHand" Value="{Binding SleightOfHand}" Minimum="-10" Maximum="10" Increment="1" />
+
+            <Label Text="Магия" TextDecorations="Underline" />
+            <Entry BindingContext="{x:Reference stepperArcana}" Text="{Binding Value}" />
+            <Stepper x:Name="stepperArcana" Value="{Binding Arcana}" Minimum="-10" Maximum="10" Increment="1" />
+
+            <Label Text="Медицина" TextDecorations="Underline" />
+            <Entry BindingContext="{x:Reference stepperMedicine}" Text="{Binding Value}" />
+            <Stepper x:Name="stepperMedicine" Value="{Binding Medicine}" Minimum="-10" Maximum="10" Increment="1" />
+
+            <Label Text="Обман" TextDecorations="Underline" />
+            <Entry BindingContext="{x:Reference stepperDeception}" Text="{Binding Value}" />
+            <Stepper x:Name="stepperDeception" Value="{Binding Deception}" Minimum="-10" Maximum="10" Increment="1" />
+
+            <Label Text="Природа" TextDecorations="Underline" />
+            <Entry BindingContext="{x:Reference stepperNature}" Text="{Binding Value}" />
+            <Stepper x:Name="stepperNature" Value="{Binding Nature}" Minimum="-10" Maximum="10" Increment="1" />
+
+            <Label Text="Проницательность" TextDecorations="Underline" />
+            <Entry BindingContext="{x:Reference stepperInsight}" Text="{Binding Value}" />
+            <Stepper x:Name="stepperInsight" Value="{Binding Insight}" Minimum="-10" Maximum="10" Increment="1" />
+
+            <Label Text="Расследование" TextDecorations="Underline" />
+            <Entry BindingContext="{x:Reference stepperInvestigation}" Text="{Binding Value}" />
+            <Stepper x:Name="stepperInvestigation" Value="{Binding Investigation}" Minimum="-10" Maximum="10" Increment="1" />
+
+            <Label Text="Религия" TextDecorations="Underline" />
+            <Entry BindingContext="{x:Reference stepperReligion}" Text="{Binding Value}" />
+            <Stepper x:Name="stepperReligion" Value="{Binding Religion}" Minimum="-10" Maximum="10" Increment="1" />
+
+            <Label Text="Скрытность" TextDecorations="Underline" />
+            <Entry BindingContext="{x:Reference stepperStealth}" Text="{Binding Value}" />
+            <Stepper x:Name="stepperStealth" Value="{Binding Stealth}" Minimum="-10" Maximum="10" Increment="1" />
+
+            <Label Text="Убеждение" TextDecorations="Underline" />
+            <Entry BindingContext="{x:Reference stepperPersuasion}" Text="{Binding Value}" />
+            <Stepper x:Name="stepperPersuasion" Value="{Binding Persuasion}" Minimum="-10" Maximum="10" Increment="1" />
+
+            <Label Text="Класс Доспеха" TextDecorations="Underline" />
+            <Entry BindingContext="{x:Reference stepperArmor}" Text="{Binding Value}" />
+            <Stepper x:Name="stepperArmor" Value="{Binding Armor}" Minimum="1" Maximum="20" Increment="1" />
+
+            <Label Text="Инициатива" TextDecorations="Underline" />
+            <Entry BindingContext="{x:Reference stepperInitiative}" Text="{Binding Value}" />
+            <Stepper x:Name="stepperInitiative" Value="{Binding Initiative}" Minimum="1" Maximum="20" Increment="1" />
+
+            <Label Text="Скорость" TextDecorations="Underline"  />
+            <Editor Text="{Binding Speed}" AutoSize="TextChanges" />
+        
+            <Label Text="Максимум ХП" TextDecorations="Underline" />
+            <Entry BindingContext="{x:Reference stepperMaxHP}" Text="{Binding Value}" />
+            <Stepper x:Name="stepperMaxHP" Value="{Binding MaxHP}" Minimum="1" Maximum="20" Increment="1" />
+
+            <Label Text="Временные ХП" TextDecorations="Underline" />
+            <Entry BindingContext="{x:Reference stepperTempHP}" Text="{Binding Value}" />
+            <Stepper x:Name="stepperTempHP" Value="{Binding TempHP}" Minimum="0" Maximum="20" Increment="1" />
+
+            <Label x:Name="MessageLabel" Text="" TextColor="Red" />
+
+            <Grid ColumnDefinitions="*,*">
+            <!-- Layout children in two columns -->
+            
+            <Button Text="Сохранить"
+                    Clicked="OnSaveButtonClicked" />
+        </Grid>
+    </StackLayout>
+    </ScrollView>
+</ContentPage>
